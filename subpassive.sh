@@ -12,10 +12,10 @@ main(){
 		# run sublist3r
 		python3 /home/hunter/tools/Turbolist3r/turbolist3r.py -d $line -q -o "./subdomains/$line.txt"
 		cat "./subdomains/$line.txt" | anew "./subdomains/$output"
-		rm -rf "./subdomains/$line.txt"	
 		# run github subdomain extractor
 		github-subdomains -d $line -t $token -raw -k -q | anew "./subdomains/$output"
 		rm -rf "$line.txt"
+		rm -rf "./subdomains/$line.txt"	
 	done < "$domains"
 	
 	echo "total subdomains found: `cat './subdomains/'$output | wc -l`"
